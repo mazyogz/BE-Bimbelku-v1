@@ -26,6 +26,36 @@ exports.getAllBimbel = async (req, res) => {
   }
 };
 
+exports.getBimbelById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const listBimbel = await bimbel.findAll({
+      attributes: [
+        "id",
+        "nama",
+        "url_location",
+        "phone",
+        "jam_buka",
+        "hari_buka",
+        "url_pic",
+        "kecamatan",
+        "website",
+        "alamat",
+      ],
+      where: {
+        id: id,
+      },
+    });
+    res.status(200).json({
+      success: true,
+      message: "Selected bimbels",
+      data: listBimbel,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 exports.getBimbelByKecamatan = async (req, res) => {
   const { kecamatan } = req.params;
   try {
