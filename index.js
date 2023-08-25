@@ -18,8 +18,8 @@ const db = require('./config/db.config'); //Connect to database railway
 const prefix = '/v1/api/';
 app.get(prefix + 'bimbel', getAllBimbel);
 app.post(prefix + 'bimbel', createBimbel);
-app.put(prefix + 'bimbel/:id', updateBimbel);
-app.delete(prefix + 'bimbel/:id', deleteBimbel);
+app.post(prefix + 'bimbel/:id/update', updateBimbel);
+app.post(prefix + 'bimbel/:id/delete', deleteBimbel);
 app.get(prefix + 'bimbel/id/:id', getBimbelById);
 app.get(prefix + 'bimbel/:kecamatan', getBimbelByKecamatan);
 
