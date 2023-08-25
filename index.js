@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-const { getAllBimbel, getBimbelByKecamatan, createBimbel, updateBimbel, deleteBimbel } = require('./controllers/BimbelControllers')
+const { getAllBimbel, getBimbelByKecamatan, createBimbel, updateBimbel, deleteBimbel, getBimbelById } = require('./controllers/BimbelControllers')
 
 // const db = require('./config/db.local.config'); //Connect to database local
 const db = require('./config/db.config'); //Connect to database railway
@@ -20,6 +20,7 @@ app.get(prefix + 'bimbel', getAllBimbel);
 app.post(prefix + 'bimbel', createBimbel);
 app.put(prefix + 'bimbel/:id', updateBimbel);
 app.delete(prefix + 'bimbel/:id', deleteBimbel);
+app.get(prefix + 'bimbel/id/:id', getBimbelById);
 app.get(prefix + 'bimbel/:kecamatan', getBimbelByKecamatan);
 
 db.authenticate()
